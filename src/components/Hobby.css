@@ -1,0 +1,147 @@
+/* Microsoft AI Style Replication with Custom Typography */
+
+.hobby-section {
+    position: relative;
+    width: 100%;
+    /* No fixed height, relies on Pin */
+    background-color: #EBEBEB; /* Cream/Beige background */
+    color: #1a1a1a;
+}
+
+.hobby-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    max-width: 1920px;
+    margin: 0 auto;
+    overflow: hidden;
+    perspective: 100vh; /* Critical for 3D translateZ */
+}
+
+/* Slides Portal Container */
+.hobby-slides-portal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Individual Slide */
+.hobby-slide {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 8px; /* rounded-5fx equivalent */
+    will-change: transform, opacity, filter;
+}
+
+.hobby-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Content Overlay */
+.hobby-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Ensure vertical centering */
+}
+
+/* "My hobby" */
+.hobby-meta {
+    color: #F66C40;
+    font-family: 'Platypi', serif;
+    font-size: 26px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: 0.52px;
+    margin-bottom: 20px; /* Space between meta and titles */
+}
+
+/* Text Wrapper for Stacking */
+.hobby-text-wrapper {
+    display: grid;
+    grid-template-areas: "stack";
+    place-items: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Common Text Style */
+.hobby-title,
+.hobby-description {
+    grid-area: stack; /* Stack them on top of each other */
+    color: #000;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.68px;
+    margin: 0;
+    word-break: keep-all;
+    width: 100%; /* Ensure they take full width for centering */
+}
+
+.hobby-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    background-color: #F6E5B8; /* Darker beige button */
+    color: #333;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 40px; /* Space below text */
+}
+
+.hobby-button:hover {
+    background-color: #ecd595;
+}
+
+.hobby-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hobby-slide {
+        width: 70vw !important;
+        height: auto !important;
+        aspect-ratio: 3/4;
+        opacity: 0.6 !important;
+    }
+    
+    .hobby-slide:nth-child(1) { left: 50% !important; transform: translateX(-50%) translate3d(0,0,0) !important; top: 10% !important; }
+    .hobby-slide:nth-child(2) { display: none; }
+    .hobby-slide:nth-child(3) { bottom: 10% !important; left: 10% !important; }
+    
+    /* Responsive Text Sizes */
+    .hobby-title,
+    .hobby-description {
+        font-size: 24px;
+    }
+    
+    .hobby-meta {
+        font-size: 20px;
+    }
+}

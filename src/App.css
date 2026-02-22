@@ -1,0 +1,143 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Platypi:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+  --main-font: 'Pretendard', sans-serif;
+  --point-font: 'Platypi', serif;
+  --point-font2: 'Lora', serif;
+  --bg-color: #1D1F24;
+  --text-color: #ffffff;
+  --accent-color: #e0e0e0;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--main-font);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main-content-wrapper {
+  position: relative;
+  z-index: 1;
+  background-color: var(--bg-color);
+  margin-bottom: 694px;
+  /* Matches Contact section height */
+  width: 100%;
+}
+
+
+/* Sections Common Style */
+.section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+}
+
+.section-title {
+  font-family: var(--point-font);
+  font-size: 4rem;
+  font-weight: 300;
+  margin-bottom: 50px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+
+/* About Section Style */
+.about-content .description {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #ccc;
+}
+
+/* Work Section Style */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  width: 100%;
+}
+
+.work-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.work-card:hover {
+  transform: translateY(-10px);
+}
+
+.work-image-placeholder {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(45deg, #111, #222);
+}
+
+.work-info {
+  padding: 20px;
+}
+
+.work-info h3 {
+  font-family: var(--point-font);
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.work-info p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Contact Section Style */
+.contact-links {
+  display: flex;
+  gap: 30px;
+}
+
+.contact-item {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-family: var(--point-font);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  border-bottom: 1px solid #fff;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}

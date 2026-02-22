@@ -1,0 +1,746 @@
+/* --- Work Intro Section (Sticky Layered Slider) --- */
+.work-intro-section {
+    width: 100%;
+    height: 100vh;
+    /* 400vh -> 100vh (pin 사용) */
+    position: relative;
+    background-color: #121212;
+    /* 사진과 동일한 어두운 배경 */
+    z-index: 20;
+}
+
+.sticky-wrapper {
+    position: relative;
+    /* sticky -> relative */
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    /* 위로 밀어올릴 때 내용이 삐져나가지 않게 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-slides-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.intro-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    /* 아래쪽 기준 정렬 */
+    justify-content: center;
+    padding: 0 128px;
+    padding-bottom: 185px;
+    /* 스텝바(60px) + 아이콘영역(~38px) + 간격(87px) = 약 185px */
+    opacity: 0;
+    visibility: hidden;
+    background-color: #1D1F24;
+}
+
+.intro-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.slide-text-area {
+    color: #F8F8FB;
+}
+
+.intro-project-tag {
+    color: #F66C40;
+    /* 포인트 오렌지 */
+    font-family: 'Platypi', serif;
+    font-style: italic;
+    font-size: 36px;
+    margin-bottom: 23px;
+    font-weight: 400;
+    line-height: 120%;
+    /* 43.2px */
+    letter-spacing: 0.72px;
+}
+
+.slide-title {
+    font-family: 'Lora', serif;
+    font-size: 70px;
+    line-height: 1.1;
+    margin-bottom: 100px;
+    font-weight: 500;
+}
+
+.slide-subtitle {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.slide-desc {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 19px;
+    line-height: 140%;
+    font-weight: 300;
+    margin-bottom: 40px;
+    max-width: 761px;
+    white-space: pre-line;
+    color: #EAEAEA;
+}
+
+.slide-info {
+    font-size: 16px;
+    color: #888;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.slide-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 60px;
+}
+
+.slide-btn {
+    position: relative;
+    padding: 12px 32px;
+    border-radius: 50px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #fff;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.slide-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: #FF5C35;
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+.slide-btn:hover {
+    color: #fff;
+    border-color: #FF5C35;
+}
+
+.slide-btn:hover::before {
+    height: 100%;
+}
+
+.slide-btn svg {
+    position: relative;
+    z-index: 2;
+}
+
+.slide-mockup-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.slide-mockup-area img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- Grid Slide Specific Styles --- */
+.grid-slide-wrapper {
+    width: 1712px;
+    height: 710px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+.intro-role-title {
+    font-family: 'Platypi', serif;
+    font-size: 36px;
+    color: #F66C40;
+    /* 오렌지색 */
+    font-style: italic;
+    margin-bottom: 0px;
+    font-weight: 400;
+    line-height: 120%;
+    /* 43.2px */
+    letter-spacing: 0.72px;
+}
+
+.grid-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    height: 100%;
+}
+
+.grid-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-col {
+    width: 613px;
+}
+
+.right-col {
+    width: calc(1712px - 613px - 80px);
+    /* 521px 이미지들을 담기 위한 공간 조절 */
+    gap: 30px;
+}
+
+.grid-card {
+    background: transparent;
+}
+
+.main-card .card-img-box {
+    width: 613px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.main-card .card-img-box img {
+    width: 100%;
+    height: auto;
+    /* 원본 비율 유지 */
+    display: block;
+}
+
+.card-text-box {
+    padding-top: 20px;
+    color: #F8F8FB;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #B0B0B0;
+    margin-bottom: 20px;
+    white-space: pre-line;
+}
+
+/* Horizontal Cards (Right Column) */
+.grid-card-horizontal {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.card-img-box.small {
+    width: 521px;
+    /* 요청하신 521px */
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-img-box.small img {
+    width: 100%;
+    height: auto;
+    /* 원본 비율 유지 */
+    display: block;
+}
+
+
+
+/* Animation for Slide Types */
+.slide-type-grid {
+    background-color: #1D1F24 !important;
+}
+
+.right-row {
+    width: 100%;
+}
+
+@media (max-width: 1400px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-card-horizontal {
+        flex-direction: column;
+    }
+
+    .card-img-box.small {
+        width: 100%;
+        height: 250px;
+    }
+}
+
+/* Bottom Stepper */
+.stepper-container {
+    position: absolute;
+    bottom: 60px;
+    left: 4%;
+    right: 4%;
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    z-index: 100;
+}
+
+.step-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: flex 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-block.active {
+    flex: 3;
+}
+
+.step-icon-box {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 24px;
+    opacity: 0.1;
+    transition: opacity 0.3s;
+}
+
+.step-block.active .step-icon-box {
+    opacity: 1;
+}
+
+.step-icon-box svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+}
+
+.step-progress-bar {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.step-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: #fff;
+}
+
+/* --- Frontend Work Section (Clone Coding) --- */
+.frontend-work-section {
+    position: relative;
+    /* absolute -> relative */
+    width: 100%;
+    min-height: 100vh;
+    background-color: #EBEBEB;
+    /* 연한 그레이 배경 */
+    color: #121212;
+    padding: 200px;
+    /* 슬라이드 위로 겹쳐 올라오게 */
+    margin-top: -100vh;
+
+
+    display: flex;
+    justify-content: center;
+    z-index: 50;
+    /* 슬라이드(20) 위 */
+    overflow: hidden;
+}
+
+.frontend-container {
+    width: 1439px;
+    margin: 60px auto;
+}
+
+.frontend-header {
+    margin-bottom: 180px;
+}
+
+.frontend-title {
+    font-family: 'Platypi', serif;
+    font-size: 60px;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 14px;
+    line-height: 120%;
+    /* 72px */
+    letter-spacing: -1.2px;
+}
+
+.frontend-title span {
+    font-family: 'Lora', serif;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    letter-spacing: -1.2px;
+}
+
+.frontend-subtitle {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: #444;
+}
+
+.frontend-list {
+    border-top: 1px solid #CCC;
+}
+
+.frontend-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.item-text-box {
+    display: flex;
+    gap: 40px;
+    align-items: baseline;
+    transition: all 0.3s ease;
+}
+
+.item-id {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #888;
+}
+
+.item-title {
+    font-family: 'Lora', serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: #121212;
+}
+
+.item-arrow {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: #888;
+}
+
+/* Hover States */
+.frontend-item:hover .item-id,
+.frontend-item:hover .item-title {
+    color: #F66C40;
+    /* 오렌지색 적용 */
+}
+
+.frontend-item:hover .item-arrow {
+    background-color: #F66C40;
+    border-color: #F66C40;
+    color: #FFF;
+}
+
+/* Preview Image in the middle */
+.item-hover-preview {
+    position: absolute;
+    left: 57%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    height: auto;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.item-hover-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.read-this {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: #F66C40;
+    color: #FFF;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+@keyframes fadeInPop {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@media (max-width: 1440px) {
+    .frontend-container {
+        width: 90%;
+    }
+
+    .item-hover-preview {
+        display: none;
+        /* 작은 화면에선 프리뷰 숨김 */
+    }
+}
+
+/* --- Marquee Section --- */
+.marquee-area {
+    margin-top: 230px;
+    position: relative;
+    /* 추가: 컨테이너 max-width 무시하고 전체 너비 사용 */
+    width: 100vw;
+    height: 100vh;
+    margin-left: calc(50% - 50vw);
+    padding-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.marquee-text {
+    font-family: 'Lora', serif;
+    font-size: 300px;
+    font-weight: 400;
+    line-height: 120%;
+    white-space: nowrap;
+    letter-spacing: -10px;
+    color: #121212;
+    /* transition: transform 0.1s linear; */
+    /* GSAP controlled */
+}
+
+/* Ensure texts start visible/centered before animation */
+.marquee-text-left {
+    transform: translateX(0);
+    position: absolute;
+    left: -14px;
+    top: 60px;
+}
+
+.marquee-text-right {
+    transform: translateX(0);
+    position: absolute;
+    right: -50px;
+    bottom: 210px;
+}
+
+
+/* --- F1 Layout Slide Specific Styles --- */
+.f1-slide-wrapper {
+    width: 1669px;
+    /* Changed from 1712px to match content width */
+    height: 710px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    /* padding-top: 50px; Adjusted to match alignment */
+}
+
+/* "What I do" Title - styled same as intro-role-title */
+.f1-slide-wrapper .intro-role-title {
+    margin-bottom: 83px;
+    /* Space between title and content */
+}
+
+.f1-content-box {
+    width: 100%;
+    /* Fill the wrapper */
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    /* Ensure columns spread to edges */
+    align-items: stretch;
+    /* Make all columns equal height */
+}
+
+.f1-card-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 384px;
+    /* Image width 384px */
+}
+
+.f1-col-title {
+    color: #F8F8FB;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.f1-img-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #121212;
+    position: relative;
+    /* transition: transform 0.3s ease; */
+}
+
+.f1-img-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Vertical Cards (Col 1 & 2) */
+.f1-img-card.vertical {
+    width: 384px;
+    height: auto;
+}
+
+/* Col 3 (Horizontal Card + Text) */
+.f1-card-col.wide {
+    width: 384px;
+    /* Keep same width */
+}
+
+.f1-img-card.horizontal {
+    width: 384px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.f1-img-card.horizontal .img-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.f1-desc-text {
+    width: 371px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #B0B0B0;
+    /* Matching card-desc color */
+    word-break: keep-all;
+}
+
+/* Col 4 (Text Panel) */
+.f1-text-panel {
+    width: 384px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding-top: 45px;
+    /* Visual adjustment to align with text */
+}
+
+.f1-text-panel .slide-buttons {
+    justify-content: flex-end;
+    /* Align buttons to the right */
+    width: 100%;
+}
+
+/* Team 2 Slide (ChatBot) Mockup Styles */
+.team2-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    /* Restrict width to avoid pushing text */
+    height: 600px;
+    /* Restrict height to maintain vertical alignment */
+}
+
+.team2-img {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    width: 990px;
+    height: 872px;
+    object-fit: contain;
+}
+
+.team2-logo {
+    position: absolute;
+    top: 37%;
+    left: 27%;
+    transform: translate(-50%, -50%);
+    width: 219px;
+    height: 220px;
+    object-fit: contain;
+}
+
+/* Text Reveal Animation Classes */
+.y_ {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.2;
+    /* Adjust to match font metrics */
+}
+
+.y {
+    display: inline-block;
+    transform: translate3d(0, 100%, 0);
+    will-change: transform;
+}
+
+.f1-main-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #B0B0B0;
+    white-space: pre-line;
+    margin-left: 10px;
+    margin-bottom: 40px;
+}

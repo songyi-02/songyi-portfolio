@@ -1,0 +1,84 @@
+/* --- Process Section --- */
+.process-section {
+    position: relative;
+    width: 100%;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #F8F8FB;
+}
+
+.process-title {
+    font-family: 'Lora', serif;
+    font-size: 160px;
+    font-weight: 500;
+    margin-bottom: -80px;
+    text-align: center;
+}
+
+/* 카드 가로 배열 컨테이너 (트랙) - 화면 밖 숨김 */
+.process-card-track {
+    width: 100vw;
+    /* margin-left 제거: Flex parent(items-center)가 이미 중앙 정렬하므로 width: 100vw만 있으면 정확히 꽉 찹니다. */
+    overflow: hidden;
+    margin-bottom: 106px;
+    padding: 20px 0; /* 부유 효과를 위한 상하 여백 확보 */
+}
+
+/* 실제 움직이는 래퍼 */
+.process-card-wrapper {
+    display: flex;
+    width: max-content;
+    flex-wrap: nowrap;
+    will-change: transform;
+    align-items: flex-start;
+    padding-top: 20px; /* 오프셋 카드들의 위 공간 확보 */
+    padding-bottom: 20px; /* 부유 효과를 위한 아래 공간 확보 */
+}
+
+.process-card {
+    /* Width and margin are handled inline in JSX */
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+    display: block;
+    flex-shrink: 0;
+}
+
+.process-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.process-desc {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 20px;
+    line-height: 160%;
+    text-align: center;
+    color: #EAEAEA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.desc-line {
+    display: inline-block;
+    will-change: clip-path;
+}
+
+/* Text Reveal Animation Classes */
+.y_ {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.2;
+}
+
+.y {
+    display: inline-block;
+    transform: translate3d(0, 100%, 0);
+    will-change: transform;
+}
