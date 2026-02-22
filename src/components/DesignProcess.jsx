@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { designProcessData } from '../data/DesignProcess';
+import { designProcessData } from '../assets/data/DesignProcess';
 import './DesignProcess.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,36 +32,28 @@ const DesignProcess = () => {
                 repeat: -1
             });
 
-            // ✅ Individual Card Floating Animation
-            const cardElements = gsap.utils.toArray(".process-card");
-            cardElements.forEach((card, i) => {
-                gsap.to(card, {
-                    y: i % 2 === 0 ? -15 : 15,
-                    duration: 2.5 + Math.random() * 1.5,
+            // ✅ Individual Card Floating Animation (Sync Original & Clone)
+            const cards = gsap.utils.toArray(".process-card");
+            const dataLength = designProcessData.length;
+            
+            for (let i = 0; i < dataLength; i++) {
+                const duration = 2.5 + Math.random() * 1.5;
+                const delay = Math.random() * 2;
+                const yVal = i % 2 === 0 ? -25 : 25;
+                
+                // 원본 카드와 클론 카드가 동일한 애니메이션을 갖도록 함 (끊김 방지)
+                gsap.to([cards[i], cards[i + dataLength]], {
+                    y: yVal,
+                    duration: duration,
                     ease: "sine.inOut",
                     repeat: -1,
                     yoyo: true,
-                    delay: Math.random() * 2
+                    delay: delay
                 });
-            });
+            }
 
-            // ✅ Title Animation (intro-project-tag 스타일과 동일하게)
-            const titleChars = sectionRef.current.querySelectorAll(".process-title .y");
-            
-            // 초기 상태 강제 (이미 CSS에 있지만 JS에서도 확실히 설정)
-            gsap.set(titleChars, { y: "100%" });
 
-            gsap.to(titleChars, {
-                y: "0%",
-                duration: 0.8,
-                ease: "power4.out",
-                stagger: 0.03,
-                scrollTrigger: {
-                    trigger: sectionRef.current, // 트리거를 현재 섹션으로 명시
-                    start: "top 80%", // 좀 더 빨리 시작되도록 조정
-                    toggleActions: "play none none reverse",
-                }
-            });
+            ScrollTrigger.refresh();
 
             // 모든 요소가 로드된 후 정확한 위치 계산을 위해 즉시 및 지연 리프레시 실행
             ScrollTrigger.refresh();

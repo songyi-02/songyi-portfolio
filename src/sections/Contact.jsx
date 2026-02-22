@@ -10,6 +10,20 @@ import contactRabbit from '../assets/video/contact_rabbit_2.mp4';
 
 
 
+// SplitText Component (텍스트 리빌용)
+const SplitText = ({ text }) => {
+    if (!text) return null;
+    return (
+        <span style={{ display: 'inline-block' }}>
+            {text.split('').map((char, index) => (
+                <span key={index} className="y_">
+                    <span className="y">{char === ' ' ? '\u00A0' : char}</span>
+                </span>
+            ))}
+        </span>
+    );
+};
+
 // GSAP Refs
 const Contact = () => {
     const contactRef = React.useRef(null);
@@ -26,6 +40,7 @@ const Contact = () => {
         gsap.registerPlugin(ScrollTrigger);
 
         const ctx = gsap.context(() => {
+            // 컨테이너 리빌 애니메이션
             gsap.fromTo(containerRef.current,
                 {
                     y: 100,
@@ -37,13 +52,35 @@ const Contact = () => {
                     ease: "none",
                     scrollTrigger: {
                         trigger: ".main-content-wrapper",
-                        start: "bottom bottom", // main-content-wrapper 하단이 훑고 지나갈 때 시작
-                        end: "bottom+=694px bottom", // margin-bottom(694px) 구간 동안 완료
+                        start: "bottom bottom",
+                        end: "bottom+=694px bottom",
                         scrub: 1,
                     }
                 }
             );
-        }, contactRef);
+
+            // ✅ Title Animation (intro-project-tag 스타일과 동일하게)
+            const titleChars = containerRef.current.querySelectorAll(".contact-title .y");
+            
+            if (titleChars.length > 0) {
+                gsap.fromTo(titleChars, 
+                    { y: "100%" },
+                    {
+                        y: "0%",
+                        ease: "none", 
+                        stagger: 0.05,
+                        scrollTrigger: {
+                            trigger: ".main-content-wrapper",
+                            start: "bottom bottom", 
+                            end: "bottom+=694px bottom",
+                            scrub: 1,
+                        }
+                    }
+                );
+            }
+
+            ScrollTrigger.refresh();
+        }); // 컨텍스트 스코프 제거하여 외부 요소(.main-content-wrapper) 탐색 허용
 
         return () => ctx.revert();
     }, []);
@@ -55,7 +92,9 @@ const Contact = () => {
                 {/* Main Content: Left Text / Right Video */}
                 <div className="contact-main">
                     <div className="contact-left">
-                        <h2 className="contact-title">Contact to me</h2>
+                        <h2 className="contact-title">
+                            <SplitText text="Contact to me" />
+                        </h2>
                         <ul className="contact-list">
                             <li className="contact-list-item">
                                 <a href="mailto:hee6544000@naver.com">hee6544000@naver.com</a>

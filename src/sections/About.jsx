@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import rabbitImg from '../assets/img/about_rabbit.png';
 import profileImg from '../assets/img/profile.png';
-import { aboutValues } from '../data/About.js';
+import { aboutValues } from '../assets/data/About.js';
 import iconFigma from '../assets/img/icon Figma.png';
 import iconPs from '../assets/img/icon Photoshop.png';
 import iconAi from '../assets/img/icon Illustrator.png';
@@ -17,19 +17,33 @@ import iconJava from '../assets/img/icon java.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const SplitText = ({ text }) => {
+    if (!text) return null;
+    return (
+        <span style={{ display: 'inline-block' }}>
+            {text.split('').map((char, index) => (
+                <span key={index} className="y_">
+                    <span className="y">{char === ' ' ? '\u00A0' : char}</span>
+                </span>
+            ))}
+        </span>
+    );
+};
+
 const About = () => {
     const sectionRef = useRef(null);
     const pathRef = useRef(null);
     const profileSectionRef = useRef(null);
     const profileLineRef = useRef(null);
 
-
-
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
 
             // --- Part 1: Top Slogan & Cards Animation ---
-            gsap.set(".slogan-line", { clipPath: "inset(0 100% 0 0)", opacity: 1 });
+            // Slogan Chars 초기 상태 설정
+            const sloganChars = sectionRef.current.querySelectorAll(".about-slogan .y");
+            gsap.set(sloganChars, { y: "100%" });
+            
             gsap.set(".value-card", { y: 100, opacity: 0 });
             gsap.set(".about-rabbit-img", { y: 50, opacity: 0, scale: 0.9 });
 
@@ -42,11 +56,11 @@ const About = () => {
                 }
             });
 
-            // 1. Title
-            tl.to(".slogan-line", {
-                clipPath: "inset(0 0% 0 0)",
+            // 1. Title (Individual Chars Reveal)
+            tl.to(sloganChars, {
+                y: "0%",
                 duration: 1.5,
-                stagger: 0.5,
+                stagger: 0.05,
                 ease: "power4.out"
             });
 
@@ -143,8 +157,8 @@ const About = () => {
                 {/* Main Slogan Area */}
                 <div className="about-header">
                     <h2 className="about-slogan">
-                        <div className="slogan-line">Relentless in <span className="italic"> detail</span></div>
-                        <div className="slogan-line">responsible to the end.</div>
+                        <div className="slogan-line"><SplitText text="Relentless in " /><span className="italic"><SplitText text="detail" /></span></div>
+                        <div className="slogan-line"><SplitText text="responsible to the end." /></div>
                     </h2>
                     <div className="slogan-underline">
                         <svg viewBox="0 0 302 21" fill="none" xmlns="http://www.w3.org/2000/svg">

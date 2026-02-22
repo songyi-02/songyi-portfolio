@@ -168,10 +168,34 @@
     position: relative;
 }
 
-.slide-mockup-area img {
-    max-width: 100%;
-    height: auto;
+.mockup-img {
+    width: 651px;
+    height: 578px;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
 }
+
+.mockup-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 651px;
+    height: 578px;
+}
+
+.mockup-video {
+    position: absolute;
+    top: -63px;
+    left: 29px;
+    width: 93%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1; /* 이미지 뒤에 위치 */
+}
+
 
 /* --- Grid Slide Specific Styles --- */
 .grid-slide-wrapper {
@@ -433,6 +457,7 @@
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .item-text-box {

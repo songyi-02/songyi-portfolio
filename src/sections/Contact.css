@@ -14,6 +14,20 @@
     z-index: 0;
 }
 
+/* Text Reveal Animation Classes */
+.y_ {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.2;
+}
+
+.y {
+    display: inline-block;
+    transform: translate3d(0, 100%, 0);
+    will-change: transform;
+}
+
 .contact-container {
     width: 75%;
     max-width: 1600px;

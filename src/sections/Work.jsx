@@ -7,15 +7,18 @@ import DesignProcess from '../components/DesignProcess';
 
 import papa1 from '../assets/img/papa1.png';
 import papa2 from '../assets/img/papa2.png';
-import papa3 from '../assets/img/papa3.png';
 
 import f11 from '../assets/img/f11.png';
 import f12 from '../assets/img/f12.png';
 import f13 from '../assets/img/f13.png';
-import workTeam12 from '../assets/img/work_team1_2.png';
+import workTeam1 from '../assets/img/work_team1.png';
 import workTeam2 from '../assets/img/work_team2.png';
 import workTeam22 from '../assets/img/work_team2_2.png';
 import workPersonal from '../assets/img/work_personal.png';
+import papaVideo2 from '../assets/video/papa_video2.mp4';
+import papaVideo3 from '../assets/video/papa_video3.mp4';
+import force1Video from '../assets/video/force1_video.mp4';
+
 
 import clone1 from '../assets/img/clone/clone1.png';
 import clone2 from '../assets/img/clone/clone2.png';
@@ -47,7 +50,8 @@ const introSlides = [
         btn2: "Visit Site",
         link2: "https://suin-yu.github.io/paparecipe/",
         icon: <svg viewBox="0 0 24 24"><path d="M4 4h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 10h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 16h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4z" /></svg>,
-        img: workTeam12
+        img: workTeam1,
+        video: papaVideo2
     },
     {
         type: "grid",
@@ -71,7 +75,7 @@ const introSlides = [
             },
             {
                 side: "right-bottom",
-                img: papa3,
+                video: papaVideo3, // User mentioned papa_video3, applying to both right small boxes
                 title: "제품 프로모션 디자인",
                 desc: "브랜드 이미지에 맞춰 AI를 활용해 리뉴얼 패키지 비주얼을 제작하고, After Effects를 활용해 제품 회전 모션을 적용해 메시지가 자연스럽게 전달되도록 했습니다."
             }
@@ -103,6 +107,7 @@ const introSlides = [
         img2: f12,
         title3: "실시간 채팅 및 하트 코딩 구현",
         img3: f13,
+        video3: force1Video,
         desc3: "실시간 채팅 기능과 하트 인터랙션을 디자인하고 직접 구현했습니다. 채팅 입력 시 메시지가 실시간으로 화면에 표시되도록 처리했으며, 하트 버튼을 누르면 즉각적인 시각적 반응이 나타나도록 인터랙션을 구성했습니다.",
         mainDesc: "온보딩 페이지와 메인 페이지 일부 UI 디자인을 담당하며,\n글라스모피즘 스타일을 적용해 시각적 깊이와 일관성을\n갖춘 화면을 설계했습니다. 이후 React를 활용해 설계한\nUI 구조를 직접 구현했습니다.",
         btn1: "View Plan",
@@ -117,7 +122,7 @@ const introSlides = [
         title: "App Design",
         subtitle: "Nutripick 다이어트 식품 커머스",
         desc: "광고와 복잡한 정보에 지친 소비자를 위해\n직관적인 비교와 신뢰할 수 있는 맞춤 정보를 제공하는 다이어트 식품 앱입니다.\n성분 비교, 리뷰, 커머스가 분리되어 있던 기존 서비스의 한계를 개선하여\n정보 탐색부터 구매까지 한 번에 이어지는 통합 플랫폼으로 차별화했습니다.",
-        info: "[기간]  2025. 11. 25 ~ 2025. 12. 29\n[Used Tech]  Figma, Photoshop, HTML, CSS, Javascript, ChatGPT, Midjourney",
+        info: "[기간]  2025. 09. 15 ~ 2025. 10. 21\n[Used Tech]  Figma, Photoshop, ChatGPT, Midjourney",
         btn1: "View Plan",
         link1: "https://www.figma.com/proto/WRlJDV33kVTYjwnK58G93e/%EA%B0%95%EC%86%A1%EC%9D%B4-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%9E%91%EC%97%85?page-id=65%3A6270&node-id=65-6271&viewport=510%2C285%2C0.17&t=Dt3q9fFEVe0osw2W-1&scaling=min-zoom&content-scaling=fixed",
         btn2: "Visit Figma",
@@ -128,12 +133,12 @@ const introSlides = [
 ];
 
 const cloneCodingData = [
-    { id: "01", title: "Musign", img: clone1 },
-    { id: "02", title: "Y Studio", img: clone2 },
-    { id: "03", title: "Concierge", img: clone3 },
-    { id: "04", title: "Crew a la mode", img: clone4 },
-    { id: "05", title: "Daebang", img: clone5 },
-    { id: "06", title: "Phomain", img: clone6 },
+    { id: "01", title: "Musign", img: clone1, link: "https://clone-coding-musign.vercel.app" },
+    { id: "02", title: "Y Studio", img: clone2, link: "https://clone-coding-ystudio.vercel.app" },
+    { id: "03", title: "Concierge", img: clone3, link: "https://clone-coding-dobda.vercel.app" },
+    { id: "04", title: "Crew a la mode", img: clone4, link: "https://clone-coding-cruella.vercel.app" },
+    { id: "05", title: "Daebang", img: clone5, link: "https://clone-coding-daebang.vercel.app" },
+    { id: "06", title: "Phomain", img: clone6, link: "https://clone-coding-phomein.vercel.app" },
 ];
 
 const SplitText = ({ text }) => {
@@ -154,6 +159,7 @@ const Work = () => {
     const mainRef = useRef(null);
     const introSectionRef = useRef(null);
     const stickyWrapperRef = useRef(null);
+
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -281,23 +287,56 @@ const Work = () => {
                 .to(".marquee-text-right", { x: "100vw", opacity: 0 }, 0)  // 오른쪽으로 날아감
                 .to(".frontend-work-section", { backgroundColor: "#1D1F24" }, 0); // 배경 어두운색으로 변경 (Process 섹션까지 유지)
 
-            // ✅ Frontend Work Title Animation (About 섹션과 동일한 모션)
-            gsap.set([".f-title-line", ".f-subtitle-line"], {
-                clipPath: "inset(0 100% 0 0)",
-                opacity: 1
-            });
+            // ✅ Frontend Work Title Animation (SplitText 기반 캐릭터 리빌)
+            const fTitleChars = mainRef.current.querySelectorAll(".frontend-title .y");
+            const fSubtitleChars = mainRef.current.querySelectorAll(".frontend-subtitle .y");
 
-            gsap.to([".f-title-line", ".f-subtitle-line"], {
+            gsap.set([fTitleChars, fSubtitleChars], { y: "100%" });
+
+            gsap.to(fTitleChars, {
                 scrollTrigger: {
                     trigger: ".frontend-header",
                     start: "top 85%",
                     toggleActions: "play none none reverse"
                 },
-                clipPath: "inset(0 0% 0 0)",
-                duration: 1.8,
-                stagger: 0.4,
-                ease: "power3.out" // power4보다 부드러운 가속
+                y: "0%",
+                duration: 1.0,
+                stagger: 0.03,
+                ease: "power4.out"
             });
+
+            gsap.to(fSubtitleChars, {
+                scrollTrigger: {
+                    trigger: ".frontend-header",
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                y: "0%",
+                duration: 1.2,
+                stagger: 0.01,
+                ease: "power3.out",
+                delay: 0.3
+            });
+
+            // ✅ Design Process Title Reveal (마퀴 뒤에 바로 나오도록 트리거 조정)
+            const processTitleChars = mainRef.current.querySelectorAll(".process-title .y");
+            if (processTitleChars.length > 0) {
+                gsap.fromTo(processTitleChars, 
+                    { y: "100%", opacity: 0 },
+                    {
+                        y: "0%",
+                        opacity: 1,
+                        duration: 0.8,
+                        ease: "power4.out",
+                        stagger: 0.03,
+                        scrollTrigger: {
+                            trigger: ".marquee-area",
+                            start: "bottom 70%", // 마퀴 영역 하단이 화면의 70% 지점에 올 때 (마퀴가 조금 더 사라진 뒤)
+                            toggleActions: "play none none reverse",
+                        }
+                    }
+                );
+            }
 
         }, mainRef);
 
@@ -340,7 +379,21 @@ const Work = () => {
                                         </div>
                                         <div className="slide-mockup-area">
                                             {slide.img ? (
-                                                <img src={slide.img} alt={slide.title} className="mockup-img" style={{ width: '719px', height: '578px', objectFit: 'contain' }} />
+                                                <div className="mockup-container">
+                                                    {slide.video && (
+                                                        <video 
+                                                            key={slide.video}
+                                                            className="mockup-video" 
+                                                            src={slide.video} 
+                                                            autoPlay 
+                                                            muted 
+                                                            loop 
+                                                            playsInline 
+                                                            preload="auto"
+                                                        />
+                                                    )}
+                                                    <img src={slide.img} alt={slide.title} className="mockup-img" style={{ position: 'relative', zIndex: 10 }} />
+                                                </div>
                                             ) : slide.imgMain && slide.imgLogo ? (
                                                 <div className="mockup-composite team2-container">
                                                     <img src={slide.imgMain} alt="Main" className="team2-img" />
@@ -376,7 +429,11 @@ const Work = () => {
                                                 <h3 className="f1-col-title">{slide.title3}</h3>
                                                 <div className="f1-img-card horizontal">
                                                     <div className="img-wrapper">
-                                                        <img src={slide.img3} alt={slide.title3} />
+                                                        {slide.video3 ? (
+                                                            <video src={slide.video3} autoPlay muted loop playsInline style={{ width: '100%', height: 'auto', display: 'block' }} />
+                                                        ) : (
+                                                            <img src={slide.img3} alt={slide.title3} />
+                                                        )}
                                                     </div>
                                                     <p className="f1-desc-text">
                                                         {slide.desc3 && slide.desc3.split('\n').map((line, i) => (
@@ -437,7 +494,11 @@ const Work = () => {
                                                     {slide.sections?.filter(s => s.side === 'right-top').map((sec, i) => (
                                                         <div key={i} className="grid-card-horizontal">
                                                             <div className="card-img-box small">
-                                                                <img src={sec.img} alt={sec.title} />
+                                                                {sec.video ? (
+                                                                    <video src={sec.video} autoPlay muted loop playsInline style={{ width: '100%', height: 'auto', display: 'block' }} />
+                                                                ) : (
+                                                                    <img src={sec.img} alt={sec.title} />
+                                                                )}
                                                             </div>
                                                             <div className="card-text-box">
                                                                 <h3 className="card-title">{sec.title}</h3>
@@ -450,7 +511,11 @@ const Work = () => {
                                                     {slide.sections?.filter(s => s.side === 'right-bottom').map((sec, i) => (
                                                         <div key={i} className="grid-card-horizontal">
                                                             <div className="card-img-box small">
-                                                                <img src={sec.img} alt={sec.title} />
+                                                                {sec.video ? (
+                                                                    <video src={sec.video} autoPlay muted loop playsInline style={{ width: '100%', height: 'auto', display: 'block' }} />
+                                                                ) : (
+                                                                    <img src={sec.img} alt={sec.title} />
+                                                                )}
                                                             </div>
                                                             <div className="card-text-box">
                                                                 <h3 className="card-title">{sec.title}</h3>
@@ -486,15 +551,18 @@ const Work = () => {
                 <div className="frontend-container">
                     <div className="frontend-header">
                         <div className="f-title-line">
-                            <h2 className="frontend-title">Frontend <span>Work</span></h2>
+                            <h2 className="frontend-title"><SplitText text="Frontend " /><span><SplitText text="Work" /></span></h2>
                         </div>
                         <div className="f-subtitle-line">
-                            <p className="frontend-subtitle">UI/UX와 프론트엔드 학습 과정에서 제작한 클론 코딩 프로젝트입니다.</p>
+                            <p className="frontend-subtitle"><SplitText text="UI/UX와 프론트엔드 학습 과정에서 제작한 클론 코딩 프로젝트입니다." /></p>
                         </div>
                     </div>
                     <div className="frontend-list">
                         {cloneCodingData.map((item, index) => (
-                            <div key={item.id} className="frontend-item"
+                            <a key={item.id} className="frontend-item"
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}>
                                 <div className="item-text-box">
@@ -512,7 +580,7 @@ const Work = () => {
                                         <div className="read-this">Read this</div>
                                     </div>
                                 )}
-                            </div>
+                            </a>
                         ))}
                     </div>
 

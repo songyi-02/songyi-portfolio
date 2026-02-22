@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './WorkPreview.css';
-import { col1Data, col2Data, col3Data } from '../data/WorkPreview';
+import { col1Data, col2Data, col3Data } from '../assets/data/WorkPreview';
 
 gsap.registerPlugin(ScrollTrigger);
 

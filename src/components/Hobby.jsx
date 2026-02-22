@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Hobby.css";
-import { hobbySlides } from "../data/Hobby";
+import { hobbySlides } from "../assets/data/Hobby";
 
 gsap.registerPlugin(ScrollTrigger);
 

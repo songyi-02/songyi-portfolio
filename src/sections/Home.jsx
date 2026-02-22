@@ -6,11 +6,23 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const SplitText = ({ text }) => {
+    if (!text) return null;
+    return (
+        <span style={{ display: 'inline-block' }}>
+            {text.split('').map((char, index) => (
+                <span key={index} className="y_">
+                    <span className="y">{char === ' ' ? '\u00A0' : char}</span>
+                </span>
+            ))}
+        </span>
+    );
+};
+
 const Home = () => {
     const sectionRef = useRef(null);
     const circleRef = useRef(null);
     const videoRef = useRef(null);
-    const [isLocked, setIsLocked] = useState(() => window.scrollY < 50);
     const [isResetted, setIsResetted] = useState(false);
     const [resetKey, setResetKey] = useState(0);
 
@@ -32,7 +44,6 @@ const Home = () => {
         const handleScrollReset = () => {
             if (window.scrollY === 0) {
                 // 상단 도착 시 초기화 (다시 올라올 때는 락을 걸지 않음)
-                setIsLocked(false);
                 setIsResetted(true);
                 setResetKey(prev => prev + 1);
 
@@ -61,7 +72,7 @@ const Home = () => {
     const handleTimeUpdate = () => {
         if (videoRef.current && videoRef.current.duration) {
             if (videoRef.current.currentTime >= videoRef.current.duration - 0.5) {
-                setIsLocked(false);
+                // setIsLocked(false); // 미사용 상태 제거
             }
         }
     };
@@ -69,6 +80,22 @@ const Home = () => {
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
+
+            // ✅ Hero Text Reveal Animation
+            const heroChars = sectionRef.current.querySelectorAll(".hero-text .y");
+            if (heroChars.length > 0) {
+                gsap.fromTo(heroChars, 
+                    { y: "100%" },
+                    {
+                        y: "0%",
+                        duration: 1.2,
+                        ease: "power4.out",
+                        stagger: 0.05,
+                        delay: 0.5,
+                        overwrite: true // 중복 실행 방지
+                    }
+                );
+            }
 
             tl.to(".hero-content", {
                 y: -150,
@@ -104,7 +131,7 @@ const Home = () => {
         }, sectionRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [resetKey]); // 리셋될 때마다 애니메이션 재실행
 
     return (
         <section id="home" className="section hero" ref={sectionRef}>
@@ -120,10 +147,10 @@ const Home = () => {
             </video>
 
             <div key={resetKey} className={`hero-content ${isResetted ? 'resetted' : ''}`}>
-                <div className="hero-text text-uiux">UIUX</div>
-                <div className="hero-text text-designer">Designer</div>
-                <div className="hero-text text-songyi">songyi’s</div>
-                <div className="hero-text text-portfolio">Portfolio</div>
+                <div className="hero-text text-uiux"><SplitText text="UIUX" /></div>
+                <div className="hero-text text-designer"><SplitText text="Designer" /></div>
+                <div className="hero-text text-songyi"><SplitText text="songyi’s" /></div>
+                <div className="hero-text text-portfolio"><SplitText text="Portfolio" /></div>
             </div>
 
             <div className="transition-circle" ref={circleRef}></div>

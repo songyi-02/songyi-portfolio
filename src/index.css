@@ -83,3 +83,17 @@ html {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
 }
+
+/* --- Global Text Reveal Animation Classes --- */
+.y_ {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: normal; /* 글꼴에 따라 조정 필요할 수 있음 */
+}
+
+.y {
+  display: inline-block;
+  transform: translate3d(0, 100%, 0);
+  will-change: transform;
+}
