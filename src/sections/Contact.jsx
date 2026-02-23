@@ -100,7 +100,7 @@ const Contact = () => {
                                 <a href="mailto:hee6544000@naver.com">hee6544000@naver.com</a>
                             </li>
                             <li className="contact-list-item">
-                                <a href="https://github.com" target="_blank" rel="noopener noreferrer">Github</a>
+                                <a href="https://github.com/songyi-02" target="_blank" rel="noopener noreferrer">Github</a>
                             </li>
                             <li className="contact-list-item">
                                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>

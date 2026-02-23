@@ -16,6 +16,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -37,6 +39,8 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+
 
 button {
   border-radius: 8px;
@@ -89,7 +93,8 @@ html {
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
-  line-height: normal; /* 글꼴에 따라 조정 필요할 수 있음 */
+  padding: 0.8em 0.4em;
+  margin: -0.8em -0.4em;
 }
 
 .y {
