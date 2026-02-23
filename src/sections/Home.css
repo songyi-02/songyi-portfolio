@@ -68,15 +68,16 @@
     font-family: 'Platypi', serif;
     font-style: italic;
     font-weight: 400;
+    line-height: 150px; /* Increased to accommodate larger character padding */
     animation-delay: 3.0s;
 }
 
-/* Targeted fix for 'gy' clipping in italics */
+/* Targeted fix for 'gy' clipping in italics with increased safety margin */
 .text-songyi .y_ {
-    padding-right: 0.3em;
-    margin-right: -0.3em;
-    padding-bottom: 0.3em;
-    margin-bottom: -0.3em;
+    padding-right: 0.5em;
+    margin-right: -0.5em;
+    padding-bottom: 0.5em;
+    margin-bottom: -0.5em;
 }
 
 .text-portfolio {
