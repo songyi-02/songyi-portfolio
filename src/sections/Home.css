@@ -31,7 +31,7 @@
     font-size: 100px;
     font-weight: 600;
     letter-spacing: -0.02em;
-    line-height: 1.8;
+    line-height: 1.2;
     white-space: nowrap;
     opacity: 0;
     animation: slideUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
