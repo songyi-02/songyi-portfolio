@@ -71,6 +71,14 @@
     animation-delay: 3.0s;
 }
 
+/* Targeted fix for 'gy' clipping in italics */
+.text-songyi .y_ {
+    padding-right: 0.3em;
+    margin-right: -0.3em;
+    padding-bottom: 0.3em;
+    margin-bottom: -0.3em;
+}
+
 .text-portfolio {
     top: 74%;
     left: 62%;
