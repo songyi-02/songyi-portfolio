@@ -99,6 +99,6 @@ html {
 
 .y {
   display: inline-block;
-  transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 120%, 0);
   will-change: transform;
 }

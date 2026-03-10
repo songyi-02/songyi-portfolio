@@ -82,3 +82,30 @@
     transform: translate3d(0, 100%, 0);
     will-change: transform;
 }
+
+/* --- Responsive Scaling for 1440px --- */
+@media (max-width: 1440px) {
+    .process-section {
+        margin-top: 100px; /* 200 -> 150 */
+    }
+
+    .process-title {
+        font-size: 110px; /* 160 -> 110 */
+        margin-bottom: -50px; /* -80 -> -50 */
+    }
+
+    /* scale을 이용해 내부 카드 크기 전체 축소 (js에서 설정한 width 값을 강제비율로 줄임) */
+    .process-card-track {
+        margin-bottom: -90px; /* 빈 공간 보정 (106px 여백 제거 및 축소된 높이만큼 위로 당김) */
+    }
+
+    .process-card-wrapper {
+        transform: scale(0.8);
+        transform-origin: center top;
+    }
+
+    .process-desc {
+        font-size: 16px; /* 20 -> 16 */
+        margin-top: 90px;
+    }
+}

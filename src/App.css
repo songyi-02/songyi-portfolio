@@ -141,3 +141,10 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 1440px) {
+  .main-content-wrapper {
+    margin-bottom: 620px;
+    /* Matches Contact section scaled height */
+  }
+}

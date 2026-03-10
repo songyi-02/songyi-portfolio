@@ -53,3 +53,28 @@
     height: 100%;
     object-fit: cover;
 }
+
+/* Responsive */
+@media (max-width: 1440px) {
+    .WorkPreview {
+        height: 1200px; /* 섹션 높이 축소 */
+        padding-top: 180px;
+    }
+
+    .parallax-container {
+        gap: 12px;
+        top: -300px; /* 초기 위치 조정 */
+        width: 100vw;
+    }
+
+    .parallax-column {
+        width: calc((100vw - 24px) / 3); /* 여백 없이 꽉 채움 (gap 12px * 2 = 24px) */
+        gap: 12px;
+    }
+
+    .work-preview-box {
+        width: 100%; 
+        height: auto;
+        aspect-ratio: 630 / 428; /* 원본 비율 유지 */
+    }
+}

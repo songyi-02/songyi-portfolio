@@ -3,7 +3,7 @@ import './Home.css';
 import bgVideo from '../assets/video/home_bg3.mp4';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import { homeData } from '../assets/data/Home';
 gsap.registerPlugin(ScrollTrigger);
 
 const SplitText = ({ text }) => {
@@ -85,7 +85,7 @@ const Home = () => {
             const heroChars = sectionRef.current.querySelectorAll(".hero-text .y");
             if (heroChars.length > 0) {
                 gsap.fromTo(heroChars, 
-                    { y: "100%" },
+                    { y: "130%" },
                     {
                         y: "0%",
                         duration: 1.2,
@@ -147,10 +147,19 @@ const Home = () => {
             </video>
 
             <div key={resetKey} className={`hero-content ${isResetted ? 'resetted' : ''}`}>
-                <div className="hero-text text-uiux"><SplitText text="UIUX" /></div>
-                <div className="hero-text text-designer"><SplitText text="Designer" /></div>
-                <div className="hero-text text-songyi"><SplitText text="songyi’s" /></div>
-                <div className="hero-text text-portfolio"><SplitText text="Portfolio" /></div>
+                {homeData.map((item) => (
+                    <div key={item.id} className={`hero-text ${item.className}`}>
+                        {item.split ? (
+                            <SplitText text={item.text} />
+                        ) : (
+                            <span style={{ display: 'inline-block' }}>
+                                <span className="y_">
+                                    <span className="y">{item.text}</span>
+                                </span>
+                            </span>
+                        )}
+                    </div>
+                ))}
             </div>
 
             <div className="transition-circle" ref={circleRef}></div>

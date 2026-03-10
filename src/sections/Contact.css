@@ -169,3 +169,51 @@
     line-height: 140%;
     /* 22.4px */
 }
+
+/* --- Responsive Scaling for 1440px --- */
+@media (max-width: 1440px) {
+    .contact-section {
+        height: 620px; /* 694 -> 520 */
+    }
+
+    .contact-container {
+        width: 82%; /* 조금 더 꽉 차게 변경 */
+    }
+
+    .contact-main {
+        margin-top: 70px;
+    }
+
+    .contact-title {
+        font-size: 3rem; /* 3.5rem -> 3rem */
+        margin-bottom: 3rem;
+    }
+
+    .contact-list-item {
+        font-size: 0.9rem;
+        padding: 12px 0;
+    }
+
+.contact-footer {
+    margin-bottom: 20px;
+}
+
+    /* Video scaling */
+    .video-wrapper {
+        width: 387px; /* 516 -> 387 */
+        height: 219px; /* 292 -> 219 */
+    }
+
+    /* Footer text scaling */
+    .footer-nav a,
+    .footer-nav span,
+    .footer-copyright {
+        font-size: 14px; /* 16 -> 14 */
+    }
+
+    .footer-rabbit-container {
+        width: 220px; /* 270 -> 200 */
+        height: 420px; /* 523 -> 387 */
+        bottom: -194px; /* -222 -> -160 맞춤 */
+    }
+}

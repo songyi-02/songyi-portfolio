@@ -553,11 +553,6 @@
     .frontend-container {
         width: 90%;
     }
-
-    .item-hover-preview {
-        display: none;
-        /* 작은 화면에선 프리뷰 숨김 */
-    }
 }
 
 /* --- Marquee Section --- */
@@ -757,7 +752,7 @@
 
 .y {
     display: inline-block;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 120%, 0);
     will-change: transform;
 }
 
@@ -768,4 +763,208 @@
     white-space: pre-line;
     margin-left: 10px;
     margin-bottom: 40px;
+}
+
+/* Responsive Line Breaks */
+.br-1440 {
+    display: none;
+}
+.br-desktop {
+    display: block;
+}
+
+/* --- Responsive Scaling for 1440px (Desktop / Laptop) --- */
+@media (max-width: 1440px) {
+
+    /* Responsive Line Breaks for 1440 */
+    .br-1440 {
+        display: block;
+    }
+    .br-desktop {
+        display: none;
+    }
+
+    /* 1. Intro Slides Container */
+    .intro-slide {
+        padding: 0 100px; /* 양옆 여백 축소 */
+        padding-bottom: 210px;
+    }
+
+    /* Standard Slide Typography */
+    .slide-title {
+        font-size: 54px; /* 70 -> 54 */
+        margin-bottom: 60px; /* 100 -> 60 */
+    }
+
+    .slide-subtitle {
+        font-size: 20px; /* 24 -> 20 */
+    }
+
+    .intro-project-tag,
+    .intro-role-title {
+        font-size: 28px; /* 36 -> 28 */
+        margin-bottom: 15px;
+    }
+
+    .slide-desc {
+        font-size: 16px; /* 19 -> 16 */
+        margin-bottom: 30px; /* 40 -> 30 */
+    }
+
+    .slide-btn {
+        padding: 10px 24px; /* 버튼 패딩 축소 */
+        font-size: 14px; /* 폰트 사이즈 축소 */
+        white-space: nowrap; /* 글자 줄바꿈 방지 */
+        gap: 6px; /* 아이콘 간격 축소 */
+    }
+
+    /* Standard Slide Image Box */
+    .mockup-container,
+    .mockup-img {
+        width: 500px; /* 651 -> 500 */
+        height: 444px; /* 비율에 맞춰 축소 */
+    }
+
+.mockup-video {
+    position: absolute;
+    top: -51px;
+    left: 23px;
+    width: 91%;
+}   
+
+
+    
+    /* Team 2 Slide (Chatbot) Image Box */
+    .team2-container {
+        width: 600px; /* 800 -> 600 */
+        height: 450px; /* 600 -> 450 */
+    }
+
+    .team2-img {
+        width: 750px; /* 990 -> 750 */
+        height: 660px; /* 872 -> 660 */
+    }
+
+    .team2-logo {
+        width: 160px; /* 219 -> 160 */
+        height: 160px;
+    }
+
+    /* 2. Grid Slide Layout */
+    .grid-slide-wrapper {
+        width: 1300px; /* 1712 -> 1300 */
+        height: 540px; /* 710 -> 540 */
+        gap: 20px;
+    }
+
+    .grid-layout {
+        gap: 30px; /* 40 -> 30 */
+    }
+
+    .left-col {
+        width: 480px; /* 613 -> 480 */
+    }
+
+    .right-col {
+        width: calc(1300px - 480px - 60px); /* 비율 적용 (폭 조절) */
+        gap: 20px; /* 30 -> 20 */
+    }
+
+    .main-card .card-img-box {
+        width: 480px; /* 613 -> 480 */
+    }
+
+    .card-img-box.small {
+        width: 380px; /* 521 -> 380 */
+    }
+
+    .card-title {
+        font-size: 16px; /* 18 -> 16 */
+    }
+
+    .card-desc, .f1-desc-text, .f1-main-desc {
+        font-size: 13px; /* 15 -> 13 */
+        word-break: keep-all; /* 단어 단위로 끊어지도록 설정 */
+    }
+
+    /* 3. F1 Slide Layout */
+    .f1-slide-wrapper {
+        width: 1300px; /* 1669 -> 1300 */
+        height: 540px; /* 710 -> 540 */
+    }
+
+    .f1-card-col {
+        gap: 15px; /* 20 -> 15 */
+        width: 290px; /* 384 -> 290 */
+    }
+
+    .f1-card-col.wide {
+        width: 290px; /* 384 -> 290 */
+    }
+
+    .f1-img-card.vertical {
+        width: 290px; /* 384 -> 290 */
+    }
+
+    .f1-img-card.horizontal {
+        width: 290px; /* 384 -> 290 */
+        gap: 15px; /* 20 -> 15 */
+    }
+
+    .f1-desc-text {
+        width: 280px; /* 371 -> 280 */
+    }
+
+    .f1-text-panel {
+        width: 290px; /* 384 -> 290 */
+        padding-top: 35px; /* 45 -> 35 */
+    }
+
+    .f1-slide-wrapper .intro-role-title {
+        margin-bottom: 60px; /* 83 -> 60 */
+    }
+
+    /* 4. Frontend Work Section */
+    .frontend-work-section {
+        padding: 140px 100px; /* 200px -> 140px 축소 */
+    }
+
+    .frontend-container {
+        width: 100%; /* 1439px 고정 폭 해제하고 여백 컨테이너에 맞춤 */
+        max-width: 1200px;
+    }
+
+    .frontend-title {
+        font-size: 48px; /* 60 -> 48 */
+    }
+    .frontend-title span {
+        font-size: 48px; /* 60 -> 48 */
+    }
+
+    .item-title {
+        font-size: 32px; /* 40 -> 32 */
+    }
+
+    .item-hover-preview {
+        width: 320px; /* 420 -> 320 */
+    }
+    .marquee-area {
+        margin-top: 230px; /* 230 -> 150 */
+        padding-bottom: 130px; /* 200 -> 130 */
+    }
+
+    .marquee-text {
+        font-size: 200px; /* 300 -> 200 */
+        letter-spacing: -6px; /* -10 -> -6 */
+    }
+
+    .marquee-text-left {
+        top: 80px; /* 60 -> 40 */
+        left: -10px; /* -14 -> -10 */
+    }
+
+    .marquee-text-right {
+        bottom: 360px; /* 210 -> 140 */
+        right: -30px; /* -50 -> -30 */
+    }
 }

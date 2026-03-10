@@ -60,6 +60,19 @@
     color: #1D1F24;
 }
 
+/* Desktop/Laptop Responsive (1440px) */
+@media (max-width: 1440px) {
+    .navbar-capsule {
+        right: 40px; /* 60px -> 40px */
+        padding: 4px; /* 5px -> 4px */
+    }
+
+    .nav-menu li {
+        padding: 8px 18px; /* 11px 24px -> 8px 18px */
+        font-size: 14px; /* 16px -> 14px */
+    }
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .navbar-container {

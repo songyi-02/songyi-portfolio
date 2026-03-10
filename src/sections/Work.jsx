@@ -109,7 +109,7 @@ const introSlides = [
         img3: f13,
         video3: force1Video,
         desc3: "실시간 채팅 기능과 하트 인터랙션을 디자인하고 직접 구현했습니다. 채팅 입력 시 메시지가 실시간으로 화면에 표시되도록 처리했으며, 하트 버튼을 누르면 즉각적인 시각적 반응이 나타나도록 인터랙션을 구성했습니다.",
-        mainDesc: "온보딩 페이지와 메인 페이지 일부 UI 디자인을 담당하며,\n글라스모피즘 스타일을 적용해 시각적 깊이와 일관성을\n갖춘 화면을 설계했습니다. 이후 React를 활용해 설계한\nUI 구조를 직접 구현했습니다.",
+        mainDesc: "온보딩 페이지와 메인 페이지 일부 UI 디자인을 담당하며,<br class='br-1440'/>\n글라스모피즘 스타일을 적용해 시각적 깊이와 일관성을<br class='br-1440'/>\n갖춘 화면을 설계했습니다. 이후 React를 활용해<br class='br-1440'/>\n설계한 UI 구조를 직접 구현했습니다.",
         btn1: "View Plan",
         link1: "https://www.figma.com/proto/WRlJDV33kVTYjwnK58G93e/%EA%B0%95%EC%86%A1%EC%9D%B4-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%9E%91%EC%97%85?page-id=1%3A3&node-id=1-20265&viewport=638%2C491%2C0.02&t=i4oPuw9hI0lpOFhh-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A27677",
         btn2: "Visit Site",
@@ -184,6 +184,7 @@ const Work = () => {
                 // 텍스트 애니메이션 (Split Text)
                 const chars = slide.querySelectorAll(".y");
                 if (chars.length > 0 && i === 0) {
+                    gsap.set(chars, { y: "120%" }); // 초기 숨김 상태 강제 설정
                     // 첫 번째 슬라이드: 화면에 들어올 때 애니메이션 실행
                     gsap.to(chars, {
                         y: "0%",
@@ -209,16 +210,19 @@ const Work = () => {
                     // i > 0 모든 슬라이드의 텍스트 애니메이션 트리거 추가 (Personal Project와 동일 속도)
                     if (chars.length > 0) {
                         slideVars.onStart = () => {
-                            gsap.to(chars, {
-                                y: "0%",
-                                duration: 0.8,
-                                ease: "power4.out",
-                                stagger: 0.03,
-                                overwrite: true
-                            });
+                            gsap.fromTo(chars, 
+                                { y: "120%" },
+                                {
+                                    y: "0%",
+                                    duration: 0.8,
+                                    ease: "power4.out",
+                                    stagger: 0.03,
+                                    overwrite: true
+                                }
+                            );
                         };
                         slideVars.onReverseComplete = () => {
-                            gsap.set(chars, { y: "100%", overwrite: true });
+                            gsap.set(chars, { y: "120%", overwrite: true });
                         };
                     }
 
@@ -291,7 +295,7 @@ const Work = () => {
             const fTitleChars = mainRef.current.querySelectorAll(".frontend-title .y");
             const fSubtitleChars = mainRef.current.querySelectorAll(".frontend-subtitle .y");
 
-            gsap.set([fTitleChars, fSubtitleChars], { y: "100%" });
+            gsap.set([fTitleChars, fSubtitleChars], { y: "120%" });
 
             gsap.to(fTitleChars, {
                 scrollTrigger: {
@@ -444,11 +448,7 @@ const Work = () => {
                                             </div>
                                             {/* Col 4 (Text + Buttons) */}
                                             <div className="f1-text-panel">
-                                                <p className="f1-main-desc">
-                                                    {slide.mainDesc && slide.mainDesc.split('\n').map((line, i) => (
-                                                        <React.Fragment key={i}>{line}<br /></React.Fragment>
-                                                    ))}
-                                                </p>
+                                                <p className="f1-main-desc" dangerouslySetInnerHTML={{ __html: slide.mainDesc.replace(/\n/g, '<br class="br-desktop"/>') }}></p>
                                                 <div className="slide-buttons">
                                                     <a href={slide.link1 || "#"} target={slide.link1 ? "_blank" : "_self"} rel="noopener noreferrer" className="slide-btn">
                                                         {slide.btn1}

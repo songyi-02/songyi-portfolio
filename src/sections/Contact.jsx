@@ -40,6 +40,10 @@ const Contact = () => {
         gsap.registerPlugin(ScrollTrigger);
 
         const ctx = gsap.context(() => {
+            
+            // Get the dynamic height of the contact section for scrollTrigger calculation
+            const contactHeight = contactRef.current ? contactRef.current.offsetHeight : 694;
+
             // 컨테이너 리빌 애니메이션
             gsap.fromTo(containerRef.current,
                 {
@@ -53,7 +57,7 @@ const Contact = () => {
                     scrollTrigger: {
                         trigger: ".main-content-wrapper",
                         start: "bottom bottom",
-                        end: "bottom+=694px bottom",
+                        end: `bottom+=${contactHeight}px bottom`,
                         scrub: 1,
                     }
                 }
@@ -72,7 +76,7 @@ const Contact = () => {
                         scrollTrigger: {
                             trigger: ".main-content-wrapper",
                             start: "bottom bottom", 
-                            end: "bottom+=694px bottom",
+                            end: `bottom+=${contactHeight}px bottom`,
                             scrub: 1,
                         }
                     }
@@ -97,13 +101,13 @@ const Contact = () => {
                         </h2>
                         <ul className="contact-list">
                             <li className="contact-list-item">
-                                <a href="mailto:hee6544000@naver.com">hee6544000@naver.com</a>
+                                <a href="mailto:hee65440002@gmail.com">hee65440002@gmail.com</a>
                             </li>
                             <li className="contact-list-item">
                                 <a href="https://github.com/songyi-02" target="_blank" rel="noopener noreferrer">Github</a>
                             </li>
                             <li className="contact-list-item">
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                                <a href="https://www.instagram.com/xsongyi_?igsh=MXMxMXEyeGVrbGg0eQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
                             </li>
                             <li className="contact-list-item">
                                 <span>010-9983-8557</span>
@@ -144,7 +148,7 @@ const Contact = () => {
                     </div>
 
                     <div className="footer-copyright">
-                        2025 UIUX Design Portfolio
+                        2026 UIUX Design Portfolio
                     </div>
                 </div>
 

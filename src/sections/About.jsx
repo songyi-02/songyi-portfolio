@@ -42,7 +42,7 @@ const About = () => {
             // --- Part 1: Top Slogan & Cards Animation ---
             // Slogan Chars 초기 상태 설정
             const sloganChars = sectionRef.current.querySelectorAll(".about-slogan .y");
-            gsap.set(sloganChars, { y: "100%" });
+            gsap.set(sloganChars, { y: "130%" });
             
             gsap.set(".value-card", { y: 100, opacity: 0 });
             gsap.set(".about-rabbit-img", { y: 50, opacity: 0, scale: 0.9 });
@@ -50,7 +50,7 @@ const About = () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRef.current,
-                    start: "top 50%",
+                    start: "top 50%", // 기존 50%에서 조금 더 위로 올려 늦게 시작하게
                     end: "+=800",
                     scrub: 1,
                 }
